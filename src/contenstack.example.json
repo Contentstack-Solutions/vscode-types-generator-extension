@@ -1,0 +1,18 @@
+{
+  "apiKey": "your-api-key",
+  "baseUrl": "https://api.contentstack.io",
+  "token": "your-management-token",
+  "saveTo": "",
+  "includeDocumentation": true,
+  "prefix": "",
+  "inlineModularBlocks": false,
+  "verboseModularBlocks": true,
+  "splitFiles": true,
+  "baseInterfaceNames": {
+    "module": "Module",
+    "content": "Content",
+    "contentBase": "ContentBase",
+    "file": "File",
+    "link": "Link"
+  }
+}

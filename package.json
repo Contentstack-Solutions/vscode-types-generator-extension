@@ -1,0 +1,136 @@
+{
+  "name": "contentstack-types-generator",
+  "displayName": "Contentstack Typescript Types Generator",
+  "description": "Generates Types for Contentstack's Models",
+  "author": "Contentstack",
+  "publisher": "Contentstack",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaimesa-cs/contentstack-types-generator"
+  },
+  "version": "0.0.2",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "license": "MIT",
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "contentstack-types-generator.generateTypes",
+        "title": "Contentstack: Generate Types"
+      }
+    ],
+    "configuration": {
+      "title": "Contentstack Types Generator",
+      "properties": {
+        "contentstack.typesGenerator.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Contentstack's Stack API Key"
+        },
+        "contentstack.typesGenerator.token": {
+          "type": "string",
+          "default": "",
+          "description": "Contentstack's Content Management Token"
+        },
+        "contentstack.typesGenerator.baseUrl": {
+          "type": "string",
+          "default": "https://api.contentstack.io",
+          "description": "Contentstack's Management API Base URL"
+        },
+        "contentstack.typesGenerator.generateDocs": {
+          "type": "boolean",
+          "default": true,
+          "description": "Add documentation to the generated types."
+        },
+        "contentstack.typesGenerator.inlineModularBlocks": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to generate separate separate types or inline definitions for modular blocks"
+        },
+        "contentstack.typesGenerator.verboseModularBlocks": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to generate verbose type names for modular blocks. (if set to false, there might be several types with the same name if same name was used for modular blocks on different content types.)"
+        },
+        "contentstack.typesGenerator.splitFiles": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to generate separate files per type. (requires saveTo to be set as a directory)"
+        },
+        "contentstack.typesGenerator.saveTo": {
+          "type": "string",
+          "default": "",
+          "description": "Path to save the generated types. If empty, the extension generates the type in a temporary file which opens in a new tab"
+        },
+        "contentstack.typesGenerator.prefix": {
+          "type": "string",
+          "default": "",
+          "description": "Prefix to add to the generated types names"
+        },
+        "contentstack.typesGenerator.baseTypeName": {
+          "type": "string",
+          "default": "Module",
+          "description": "Base interface name to use for the generated types"
+        },
+        "contentstack.typesGenerator.baseContentTypeName": {
+          "type": "string",
+          "default": "ContentBase",
+          "description": "Content Base interface name to use for the generated types. Extends Base Type Name"
+        },
+        "contentstack.typesGenerator.basePublishableContentTypeName": {
+          "type": "string",
+          "default": "Content",
+          "description": "Base interface name to use for the generated types. Extends Content Base"
+        },
+        "contentstack.typesGenerator.linkTypeName": {
+          "type": "string",
+          "default": "Link",
+          "description": "Base interface name to use for the link generated type."
+        },
+        "contentstack.typesGenerator.fileTypeName": {
+          "type": "string",
+          "default": "File",
+          "description": "Base interface name to use for the file generated type."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test-old": "node ./out/test/runTest.js",
+    "test": "mocha --ui tdd --timeout 999999 --colors --recursive ./out/test/suite"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.5",
+    "@types/glob": "^8.1.0",
+    "@types/lodash": "^4.14.194",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/prettier": "^2.7.2",
+    "@types/vscode": "^1.78.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vscode/test-electron": "^2.3.0",
+    "chai": "^4.3.7",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "fs": "^0.0.1-security",
+    "lodash": "^4.17.21",
+    "prettier": "^2.8.8"
+  }
+}
